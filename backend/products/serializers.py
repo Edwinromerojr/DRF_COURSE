@@ -15,6 +15,7 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = [
+            # 'user',
             'url',
             'edit_url',
             # 'email',
@@ -28,13 +29,13 @@ class ProductSerializer(serializers.ModelSerializer):
         ]
 
     # custom validation with a foreign key
-    def validate_title(self, value):
-        request = self.context.get('request')
-        user = request.user
-        qs = Product.objects.filter(user=user, title__iexact=value)
-        if qs.exists():
-            raise serializers.ValidationError(f"{value} is already a product name.")
-        return value
+    # def validate_title(self, value):
+    #     request = self.context.get('request')
+    #     user = request.user
+    #     qs = Product.objects.filter(user=user, title__iexact=value)
+    #     if qs.exists():
+    #         raise serializers.ValidationError(f"{value} is already a product name.")
+    #     return value
 
     # def create(self, validated_data):
     #     email = validated_data.pop('email')
