@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # internal apps
     'api',
+    'articles',
     'products',
     'search',
 
